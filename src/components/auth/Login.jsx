@@ -3,7 +3,7 @@ import React from 'react'
 import Input from '../shared/Input'
 import { loginForm } from '../../utils/const/authForm'
 
-export default function Register(){
+export default function Login({ navigation }){
     return (
         <View className='bg-white flex-1 items-center justify-center px-5'>
          <View>
@@ -17,8 +17,9 @@ export default function Register(){
          <FlatList
          data={loginForm}
          renderItem={({ item }) => (
+            
             <View className='mt-5 w-full'>
-            <Input title={item.title} icon = {item.icon} /> 
+            <Input item={item} /> 
 
          </View>  
          )}

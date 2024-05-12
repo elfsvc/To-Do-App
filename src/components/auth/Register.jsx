@@ -21,7 +21,7 @@ export default function Register({ navigation }){
          renderItem={({ item }) =>  (
 
             <View className='mt-5 w-full'>
-            <Input title={item.title} icon = {item.icon} /> 
+            <Input item={item} /> 
          </View>
 
          )}
