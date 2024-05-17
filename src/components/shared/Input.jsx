@@ -1,12 +1,32 @@
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
-import { Feather } from '@expo/vector-icons';
-export default function Input({ item: {title, icon, isSecure = false, secureIcon} }){
-    const[isVisible, setIsVisible] = useState(true);
+import { useSelector, useDispatch } from 'react-redux'
+import { setUserValidationInput } from '../../redux/userSlice';
 
+
+import { Feather } from '@expo/vector-icons';
+export default function Input({ item : {title, icon, isSecure = false, secureIcon, type } }) {
+    
+    const user = useSelector((state) => state.user);
+    const[isVisible, setIsVisible] = useState(true);
+    const dispatch = useDispatch();
+
+    
     const handleChangeVisible = ()=>{
         setIsVisible(!isVisible);
     }
+
+    const changeFormInfo = (type, value) => {
+        //setFormInfo((prevList) => ({ ...prevList, [name]: value }))
+        dispatch(setUserValidationInput(
+            {
+                type,
+                value,
+            }
+        ));
+
+    }
+
     console.log(title, icon, isSecure, secureIcon)
 
     return (
@@ -20,16 +40,23 @@ export default function Input({ item: {title, icon, isSecure = false, secureIcon
                 <TextInput className=' h-full px-[37px] text-[13px]'
                 secureTextEntry={isVisible}
                 placeholder={title}
+                onChangeText={(value) => { changeFormInfo(type, value) }}
+                value={user[type]}
                 
+
                 />
                 <Text className='text-[11px] text-primary absolute -top-[8px] left-[10px] bg-white 
                 px-[10px] border-1-[1px] border-r-[1px] border-border'>{title}</Text>
                 <TouchableOpacity className='absolute right-[10px] top-[12px]' onPress={handleChangeVisible}>
                     {
-                        isVisible ? 
+                        secureIcon &&
+                        (
+                        isVisible 
+                        ? 
                         secureIcon.notVisible
                         : 
                         secureIcon.visible
+                        )
                     }
                 </TouchableOpacity>
             </View>
@@ -39,6 +66,8 @@ export default function Input({ item: {title, icon, isSecure = false, secureIcon
                 
                 <TextInput className=' h-full px-[37px] text-[13px]'
                 placeholder={title}
+                onChangeText={(value) => { changeFormInfo(type, value) }}
+                value={user[type]}              
                 
                 />
                 <Text className='text-[11px] text-primary absolute -top-[8px] left-[10px] bg-white 

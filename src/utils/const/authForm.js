@@ -6,14 +6,16 @@ export const loginForm = [
     {
         id: 1,
         title: "E-mail",
+        type: 'email',
         icon : <Feather name="mail" size={20} color="black" />
     },
     {
         id: 2,
         title: "Şifre",
+        type: 'password',
         icon : <Ionicons name="key-outline" size={20} color="black" />,
         isSecure: true,
-        SecureIcon: {
+        secureIcon: {
             visible: <Feather name="eye" size={20} color="black" />,
             notVisible: <Feather name="eye-off" size={20} color="black" />
         },
@@ -26,21 +28,25 @@ export const registerForm = [
     {
         id: 1,
         title: "Ad",
+        type: 'name',
         icon : <AntDesign name="user" size={20} color="black" />,
     },
     {
         id: 2,
         title: "Soyad",
+        type: 'surname',
         icon : <AntDesign name="user" size={20} color="black" />,
     },
     {
         id: 3,
         title: "E-mail",
+        type: 'email',
         icon : <Feather name="mail" size={20} color="black" />,
     },
     {
         id: 4,
         title: "Şifre",
+        type: 'password',
         icon : <Ionicons name="key-outline" size={20} color="black" />,
         isSecure: true,
         SecureIcon: <Feather name="eye" size={20} color="black" />
@@ -48,6 +54,7 @@ export const registerForm = [
     {
         id: 5,
         title: "Şifre Tekrar",
+        type: 'rpassword',
         icon : <Ionicons name="key-outline" size={20} color="black" />,
         isSecure: true,
         SecureIcon: <Feather name="eye" size={20} color="black" />

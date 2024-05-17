@@ -5,6 +5,8 @@ import { Button } from 'react-native';
 import { registerForm } from '../../utils/const/authForm';
 
 export default function Register({ navigation }){
+    
+
     return (
         <View className='bg-white flex-1 items-center justify-center px-5'>
          <View>
@@ -36,7 +38,7 @@ export default function Register({ navigation }){
 
          <View className='w-full mt-5 flex-row'>
             <Text className='text-primary'>Hesabınız var mı? </Text>
-            <TouchableOpacity onPress={() => NavigationPreloadManager.navigate('Login')}>
+            <TouchableOpacity onPress={() =>navigation.navigate('Login')}>
                 <Text className='font-[600] ml-[7px] text-primary underline'>Giriş Yap</Text>
             </TouchableOpacity>
          </View>
@@ -44,3 +46,4 @@ export default function Register({ navigation }){
         </View>
     )
 }
+
