@@ -2,15 +2,16 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeScreen, Profile, AddTaskScreen, CompletedScreen, TaskScreen } from '../screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
-import { forSlideUp } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/HeaderStyleInterpolators';
+import { AntDesign, FontAwesome5, Entypo, MaterialIcons } from '@expo/vector-icons';
+import { Text } from 'react-native';
+//import { forSlideUp } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/HeaderStyleInterpolators';
 
 const Tab = createBottomTabNavigator();
 
 export default function UserStack() {
     return (
         <NavigationContainer>
-            <Tab.Navigator screenOptions={{ headerShown: false }}>
+            <Tab.Navigator screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
                 <Tab.Screen name="Home" component={HomeScreen} 
                 options={{
                     tabBarLabel: ( {focused} ) => (
@@ -20,7 +21,7 @@ export default function UserStack() {
                         :
                         <Text className='text-[11px] text-secondary'>Ana Sayfa</Text>
                     ),
-                    tabBarIcon: ( focused ) => (
+                    tabBarIcon: ( {focused} ) => (
                         focused
                         ?
                         <AntDesign name="home" size={20} color="#3B5BDB" />
@@ -53,7 +54,7 @@ export default function UserStack() {
              <Tab.Screen name="AddTask" component={AddTaskScreen}
                 options={{
                     tabBarLabel: () => (<Text className='text-[11px] text-main font-medium'>Task Ekle</Text>),
-                    tabBarIcon: () => (<Entypo name="squared-plus" size={24} color="#3B5BDB" />),
+                    tabBarIcon: () => (<Entypo name="squared-plus" size={32} color="#3B5BDB" />),
              }}
              />
              <Tab.Screen name="Completed" component={CompletedScreen}
@@ -71,28 +72,32 @@ export default function UserStack() {
                         <MaterialIcons name="playlist-add-check" size={28} color="#3B5BDB" />
                         :
                         <MaterialIcons name="playlist-add-check" size={28} color="#868E96" />
-                    )
-                }}
-                        
-            
-
-
-
-
-
-
-
-
-
-
-
-                <Tab.Screen name="Task" component={TaskScreen} /> 
-                <Tab.Screen name="AddTask" component={AddTaskScreen} />
-                <Tab.Screen name="Completed" component={CompletedScreen} />
-                <Tab.Screen name="Profile" component={Profile} />
-            </Tab.Navigator>
-      </NavigationContainer>
+                    ),
+            }}
+            />
+            <Tab.Screen name="Profile" component={Profile}
+              options={{
+                tabBarLabel: ({ focused }) => (
+                  focused
+                    ?
+                    <Text className='text-[11px] text-main font-medium'>Profile</Text>
+                    :
+                    <Text className='text-[11px] text-secondary'>Profil</Text>
+                ),
+    
+                tabBarIcon: ({ focused }) => (
+                  focused
+                    ?
+                    <AntDesign name="profile" size={20} color="#3B5BDB" />
+                    :
+                    <AntDesign name="profile" size={20} color="#868E96" />
+                ),
+              }}
+            />
+    
+          </Tab.Navigator>
+        </NavigationContainer>
     )
-}
-
+    }
+            
 

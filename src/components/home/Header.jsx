@@ -13,7 +13,7 @@ export default function Header() {
         />
                 </View>
                 <View>
-                    <Text className='text-primary font-medium mb-[3px]'>Hoşgeldim Elif</Text>
+                    <Text className='text-primary font-medium mb-[3px]'>Hoşgeldin Elif</Text>
                     <Text className='text-secondary'>Üye</Text>
                 </View>
             </View>
