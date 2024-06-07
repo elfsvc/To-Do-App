@@ -21,6 +21,7 @@ export default function ListItem() {
             </View>
             <View>
                 <Checkbox
+                style={{ borderColor: '#cfcfcf' }}
                     classname='rounded-[3px]'
                     value={isChecked}
                     onValueChange={setChecked}
