@@ -1,14 +1,14 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 import Section from "../shared/Section";
 import { Feather } from '@expo/vector-icons';
 import ListItem from "../shared/ListItem";
-import { Modal } from "react-native";
+// import Modal from '../components/shared/Modal';
 
 export default function List() {
-    const[modalVisible, setModalVisible] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-       <Section>
+        <Section>
 
             <View className='flex-row justify-between'>
                 <Text className='text-[16px] text-primary font-medium'>Yapılacaklar Listesi</Text>
@@ -28,9 +28,7 @@ export default function List() {
                 <Text className='text-center text-secondary text-[11px] underline'>Hedefini Gör</Text>
             </TouchableOpacity>
 
-            <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}></Modal>
-       </Section>
+            {/* <Modal setModalVisible={setModalVisible} modalVisible={modalVisible}></Modal> */}
+        </Section>
     )
 }
-
-const styles = StyleSheet.create({})

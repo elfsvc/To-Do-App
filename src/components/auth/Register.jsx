@@ -1,19 +1,34 @@
 import { Text, View, TouchableOpacity, FlatList, Image } from 'react-native';
-import React from 'react';
+import React, { useReducer } from 'react';
 import Input from '../shared/Input';
-import { Button } from 'react-native';
+import Button from 'react-native';
 import { registerForm } from '../../utils/const/authForm';
+import { inputReducer } from '../../reducer/inputReducer';
+import { registerWithEmailAndPassword } from '../../auth';
 
 export default function Register({ navigation }){
     
+    const initialState = {
+        email: '',
+        password: '',
+        rpassword: ''
+    }
+
+    const [state, dispatch] = useReducer(inputReducer, initialState);
+
+    const registerApp = () => {
+        const userData = registerWithEmailAndPassword(state.email, state.password);
+        //console.log("User Data: ", userData)
+    }
 
     return (
         <View className='bg-white flex-1 items-center justify-center px-5'>
          <View>
-             <Image     
-                source={require('../../../assets/images/auth-logo.png')}
-                
-            />
+         <Image
+            source={require('../../../assets/images/auth-logo.png')}
+            style={{ width: 350, height: 350 }}
+        />
+
         </View>
 
          
@@ -23,7 +38,7 @@ export default function Register({ navigation }){
          renderItem={({ item }) =>  (
 
             <View className='mt-5 w-full'>
-            <Input item={item} /> 
+            <Input item={item} dispatch={dispatch} state={state}/> 
          </View>
 
          )}
@@ -32,9 +47,9 @@ export default function Register({ navigation }){
       />
          </View>
 
-         <View className='w-full mt-5'>
+         <TouchableOpacity onPress={registerApp} className='w-full mt-5'>
             <Button title={'Kayıt Ol'} />
-         </View>
+         </TouchableOpacity>
 
          <View className='w-full mt-5 flex-row'>
             <Text className='text-primary'>Hesabınız var mı? </Text>

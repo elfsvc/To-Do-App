@@ -17,7 +17,7 @@ export default function PremiumBanner() {
             </View>
             <View className='mt-5'>
                 <Image
-                    style={{ width: 100, height: 100, alignSelf: 'flex-end' }}
+                    style={{ width: 150, height: 180, alignSelf: 'flex-end' }}
                     className='w-full h-full'
                     source={require('../../../assets/images/premium-banner.png')}
                 />

@@ -1,10 +1,9 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, Profile, AddTaskScreen, CompletedScreen, TaskScreen } from '../screen';
+import { HomeScreen, Profile, AddTaskScreen, CompletedScreen, TaskScreen, RegisterScreen } from '../screen';
 import { NavigationContainer } from '@react-navigation/native';
 import { AntDesign, FontAwesome5, Entypo, MaterialIcons } from '@expo/vector-icons';
 import { Text } from 'react-native';
-//import { forSlideUp } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/HeaderStyleInterpolators';
 
 const Tab = createBottomTabNavigator();
 
